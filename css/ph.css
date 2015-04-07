@@ -1,0 +1,551 @@
+body {
+background-image:url('../img/background.png');
+background-repeat:repeat;
+font-size: 12px;
+}
+h1 {
+	font-family: sans-serif;
+	color: #c55117;
+	font-size: 1.5em;
+	width: 7em;
+	float: left;
+	position: relative;
+	left: 15%;
+	margin-top: 1em;
+}
+#backwords {
+	font-family: monospace;
+	width: 8em;
+	position: absolute;
+	bottom: 20%;
+	left: 5%;
+	opacity: 0.3;
+	color: #222;
+	cursor: default;
+}
+#search {
+	position: absolute;
+	left: 55em;
+	top: 4em;
+	margin-top: 1em;
+	background-color: transparent;
+	border: 1px #0eeeee dotted;
+	border-radius: 1em;
+	width: 20em;
+}
+
+#searchbox {
+	background-color: transparent;
+	border: none;
+	margin-right: 0.5em;
+	padding-left: 0.5em;
+	width: 18em;
+	float: left;
+	border-bottom:  solid 1px #0eeeee;
+}
+#searchicon {
+	float: right;
+	position: relative;
+	right: 0.2em;
+	opacity: 0.7;
+	color: #0eeeee;
+	cursor: pointer;
+}
+#nav {
+	width: 22.5em;
+	position: absolute;
+	left: 29.5em;
+	top: 1em;
+	z-index: 10;
+}
+#nav i {
+	float: left;
+	opacity: 0.07;
+	margin-left: 1em;
+	margin-top: 0.5em;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-o-transition: 0.5s;
+	-ms-transition: 0.5s;
+	transition: 0.5s;
+	z-index: 11;
+	cursor: pointer;
+}
+/*main*/
+#main {
+	position: absolute;
+	margin-top: 1em;
+	margin-left: -18em;
+	width: 45em;
+	height: 32em;
+}
+#pageleft {
+	position: absolute;
+	left: 2em;
+	top: 3em;
+	opacity: 0.3;
+	cursor: pointer;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-o-transition: 0.5s;
+	-ms-transition: 0.5s;
+	transition: 0.5s;
+}
+#pageright {
+	position: absolute;
+	right: 2em;
+	top: 3em;
+	opacity: 0.3;
+	cursor: pointer;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-o-transition: 0.5s;
+	-ms-transition: 0.5s;
+	transition: 0.5s;
+}
+#pageleft:hover,#pageright:hover{
+	opacity: 0.8;
+}
+.wishbox {
+	width: 4em;
+	height: 4em;
+	background-color: #fff;
+	opacity: 0.5;
+	margin:0.5em;
+	border-radius: 0.8em;
+	-webkit-box-shadow:0em 0.1em 0.3em #666;
+	-moz-box-shadow:0em 0.1em 0.3em #666;
+	box-shadow:0em 0.1em 0.3em #666;
+}
+
+.wishbox .name {
+	margin-top: 1.5em;
+	text-align: center;
+	opacity: 0;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-o-transition: 0.3s;
+	-ms-transition: 0.3s;
+	transition: 0.3s;
+}
+.wishbox .time {
+	display: none;
+}
+.wishbox .content {
+	display: none;
+}
+.wishbox:hover p {
+	opacity: 0.8;
+}
+#wishbox1 {
+	position: absolute;
+	left: 19.5em;
+	top: 0em;
+}
+#wishbox2 {
+	position: absolute;
+	left: 24em;
+	top: 0em;
+}
+#wishbox3 {
+	position: absolute;
+	left: 33em;
+	top: 0em;
+}
+#wishbox4 {
+	position: absolute;
+	left: 37.5em;
+	top: 0em;
+}
+#wishbox5 {
+	position: absolute;
+	left: 15em;
+	top: 4.5em;
+}
+#wishbox6 {
+	position: absolute;
+	left: 19.5em;
+	top: 4.5em;
+}
+#wishbox7 {
+	position: absolute;
+	left: 24em;
+	top: 4.5em;
+}
+#wishbox8 {
+	position: absolute;
+	left: 28.5em;
+	top: 4.5em;
+}
+#wishbox9 {
+	position: absolute;
+	left: 33em;
+	top: 4.5em;
+}
+#wishbox10 {
+	position: absolute;
+	left: 37.5em;
+	top: 4.5em;
+}
+#wishbox11 {
+	position: absolute;
+	left: 42em;
+	top: 4.5em;
+}
+#wishbox12 {
+	position: absolute;
+	left: 15em;
+	top: 9em;
+}
+#wishbox13 {
+	position: absolute;
+	left: 19.5em;
+	top: 9em;
+}
+#wishbox14 {
+	position: absolute;
+	left: 24em;
+	top: 9em;
+}
+#wishbox15 {
+	position: absolute;
+	left: 28.5em;
+	top: 9em;
+}
+#wishbox16 {
+	position: absolute;
+	left: 33em;
+	top: 9em;
+}
+#wishbox17 {
+	position: absolute;
+	left: 37.5em;
+	top: 9em;
+}
+#wishbox18 {
+	position: absolute;
+	left: 42em;
+	top: 9em;
+}
+#wishbox19 {
+	position: absolute;
+	left: 15em;
+	top: 13.5em;
+}
+#wishbox20 {
+	position: absolute;
+	left: 19.5em;
+	top: 13.5em;
+}
+#wishbox21 {
+	position: absolute;
+	left: 24em;
+	top: 13.5em;
+}
+#wishbox22 {
+	position: absolute;
+	left: 28.5em;
+	top: 13.5em;
+}
+#wishbox23 {
+	position: absolute;
+	left: 33em;
+	top: 13.5em;
+}
+#wishbox24 {
+	position: absolute;
+	left: 37.5em;
+	top: 13.5em;
+}
+#wishbox25 {
+	position: absolute;
+	left: 42em;
+	top: 13.5em;
+}
+#wishbox26 {
+	position: absolute;
+	left: 19.5em;
+	top: 18em;
+}
+#wishbox27 {
+	position: absolute;
+	left: 24em;
+	top: 18em;
+}
+#wishbox28 {
+	position: absolute;
+	left: 28.5em;
+	top: 18em;
+}
+#wishbox29 {
+	position: absolute;
+	left: 33em;
+	top: 18em;
+}
+#wishbox30 {
+	position: absolute;
+	left: 37.5em;
+	top: 18em;
+}
+#wishbox31 {
+	position: absolute;
+	left: 24em;
+	top: 22.5em;
+}
+#wishbox32 {
+	position: absolute;
+	left: 28.5em;
+	top: 22.5em;
+}
+#wishbox33 {
+	position: absolute;
+	left: 33em;
+	top: 22.5em;
+}
+#wishbox34 {
+	position: absolute;
+	left: 28.5em;
+	top: 27em;
+}
+#makewish {
+	position: absolute;
+	top: 26em;
+	left: 42em;
+	width: 5.6em;
+	height: 5.6em;
+}
+#makewishC1 {
+	position: absolute;
+	background-color: #0eeeee;
+	width: 4em;
+	height: 4em;
+	left: -0.6em;
+	top: -0.6em;
+	border-radius: 2em;
+}
+#makewishC2 {
+	position: absolute;
+	background-color: #0eeeee;
+	width: 4em;
+	height: 4em;
+	left: -0.6em;
+	top: -0.6em;
+	border-radius: 2em;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-o-transition: 0.5s;
+	-ms-transition: 0.5s;
+	transition: 0.5s;
+}
+#makewishC3 {
+	position: absolute;
+	background-color: #0eeeee;
+	width: 4em;
+	height: 4em;
+	left: -0.6em;
+	top: -0.6em;
+	border-radius: 2em;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-o-transition: 0.5s;
+	-ms-transition: 0.5s;
+	transition: 0.5s;
+}
+
+
+.icon:hover #makewishC2 {
+	opacity: 0.5;
+	position: absolute;
+	background-color: #0eeeee;
+	width: 4.8em;
+	height: 4.8em;
+	left: -1em;
+	top: -1em;
+	border-radius: 2.4em;
+}
+.icon:hover #makewishC3 {
+	opacity: 0.2;
+	position: absolute;
+	background-color: #0eeeee;
+	width: 5.6em;
+	height: 5.6em;
+	left: -1.4em;
+	top: -1.4em;
+	border-radius: 2.8em;
+}
+.icon img {
+	position: relative;
+	z-index: 5;
+	width: 2.8em;
+	height: 2.8em;
+}
+
+
+/*wish*/
+#wishwin {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+#wish {
+	width: 26em;
+	height: 25em;
+	border-radius: 1em;
+	background-color: #fff;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: -1;
+	opacity: 0;
+	-webkit-transition: 0.5s;
+	-moz-transition: 0.5s;
+	-o-transition: 0.5s;
+	-ms-transition: 0.5s;
+	transition: 0.5s;
+}
+#wish h2 {
+	color: #c55117;
+	padding-left: 1em;
+	padding-top: 1em;
+	padding-bottom: 0.3em;
+	font-size: 1.5em;
+	position: relative;
+	border-bottom:  solid 1px #0eeeee;
+}
+#wish h2 span {
+	color: #0eeeee;
+	font-size: 1.2em;
+}
+#wish textarea {
+	width: 48%;
+	height: 60%;
+	margin-left:5%;
+	margin-bottom: 0.5em;
+	margin-right: 30%;
+	border: none;
+	float: left;
+	font-size: 1.5em;
+	resize:none;
+	background-color: transparent;
+}
+#choice {
+	width: 35%;
+	height: 60%;
+	position: absolute;
+	left: 14em;
+	top: 5em;
+	margin-left: 1.1em;
+}
+.exambox {
+	width: 4em;
+	height: 4em;
+	margin-left:0.5em;
+	margin-bottom: 0.5em;
+	border-radius: 0.8em;
+	float: left;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-o-transition: 0.3s;
+	-ms-transition: 0.3s;
+	transition: 0.3s;
+}
+.exambox:hover {
+	-webkit-box-shadow:0em 0.1em 0.5em #666;
+	-moz-box-shadow:0em 0.1em 0.5em #666;
+	box-shadow:0em 0.1em 0.5em #666;
+}
+#wish h3 {
+	color: #c55117;
+	float: left;
+	margin-left: 1em;
+	font-size: 1.5em;
+}
+#wish h3 span {
+	color: #0eeeee;
+	font-size: 1.2em;
+}
+#wish input {
+	border: none;
+	border-bottom: solid 1px #000;
+	font-size: 1.5em;
+	float: left;
+	margin-left: 0.2em;
+}
+#choose,#color,#page{
+	display: none;
+}
+#submit {
+	position: absolute;
+	top: 20em;
+	left: 19em;
+}
+#show {
+	width: 5em;
+	height: 3em;
+	background-color: #fff;
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	border-radius: 1em;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-o-transition: 0.3s;
+	-ms-transition: 0.3s;
+	transition: 0.3s;
+}
+#show i {
+	position: absolute;
+	top: 0.3em;
+	right: 0.3em;
+	color: #0eeeee;
+}
+#show p {
+	border-top: solid 1px #0eeeee;
+	position: absolute;
+	top: 1.5em;
+	height: 8em;
+	width: 90%;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 0.5em;
+	text-indent: 2em;
+}
+#lai {
+	position: absolute;
+	bottom: 2em;
+	left: 1em;
+	color: #0eeeee;
+}
+#zi {
+	position: absolute;
+	bottom: 2em;
+	left: 2em;
+	color: #c55117;
+}
+#fname {
+	position: absolute;
+	bottom: 2em;
+	left: 4em;
+}
+#ftime {
+	position: absolute;
+	bottom: 0.5em;
+	left: 1em;
+}
+/*foot*/
+#foot {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left: -9em;
+	margin-bottom: 0.5em;
+	opacity: 0.3;
+}
+#foot p {
+	text-align: center;
+	font-size: 1em;
+	margin-top: 0.25em;
+}
