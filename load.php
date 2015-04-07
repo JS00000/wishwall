@@ -4,9 +4,6 @@
   $dbhost = 'localhost'; 
   $dbuser = 'root';   
   $dbpass = 'MyHair';  
-    // $dbhost = 'qdm116724331.my3w.com'; 
-    // $dbuser = 'qdm116724331';   
-    // $dbpass = 'WWyyx5734';  
   $conn = mysql_connect($dbhost, $dbuser,$dbpass);
   mysql_set_charset('utf8',$conn);
 if(! $conn )
