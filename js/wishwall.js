@@ -1,19 +1,21 @@
-//set edition
-// function IsPC() {
-//     var userAgentInfo = navigator.userAgent;
-//     var Agents = ["Android", "iPhone",
-//                 "SymbianOS", "Windows Phone",
-//                 "iPad", "iPod","MQQBrowser","BlackBerry"];
-//     var flag = true;
-//     for (var v = 0; v < Agents.length; v++) {
-//         if (userAgentInfo.indexOf(Agents[v]) > 0) {
-//             flag = false;
-//             break;
-//         }
-//     }
-//     return flag;
-// }
-// alert(IsPC());
+// set edition
+function IsPC() {
+	var userAgentInfo = navigator.userAgent;
+    var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod","MQQBrowser","BlackBerry"];
+    var flag = true;
+    for (var v = 0; v < Agents.length; v++) {
+        if (userAgentInfo.indexOf(Agents[v]) > 0) {
+            flag = false;
+            break;
+        }
+    }
+    return flag;
+}
+if (IsPC()) {
+	window.location='http://lifefavorite.com/wish/wishwall_beta4';
+};
 
 
 //var
@@ -21,46 +23,48 @@
 	var obj;
 	var t=1;
 	var searchmode=0;
-	var pxset=15;
+	var pxset=16;
 	var ienter = 1;
 	var tid;
-
-//set color
+	var lasttime;
+	var dateObj=new Date();
+	var colornum = 0;
 	var colorarr = [];
-	colorarr[0] = "#ff00a2";
-	colorarr[1] = "#ff5bf5";
-	colorarr[2] = "#64b5f6";
-	colorarr[3] = "#18ffff";
-	colorarr[4] = "#a6ffcc";
-	colorarr[5] = "#00e676";
-	colorarr[6] = "#dce775";
-	colorarr[7] = "#eeff41";
-	colorarr[8] = "#ffde80";
-	colorarr[9] = "#ffb74d";
-	colorarr[10] = "#ff6e40";
-	colorarr[11] = "#f50057";
+	var colorurl = [];
+	var colorListurl = [];
+//set color
+	// colorarr[0] = "#ff00a2";
+	// colorarr[1] = "#ff5bf5";
+	// colorarr[2] = "#64b5f6";
+	// colorarr[3] = "#18ffff";
+	colorarr[0] = "#44bdc9";
+	colorarr[1] = "#06dbbd";
+	colorarr[2] = "#ffd633";
+	colorarr[3] = "#fecdd2";
+	colorurl[0] = "url('img/bg_blue.png')";
+	colorurl[1] = "url('img/bg_green.png')";
+	colorurl[2] = "url('img/bg_yellow.png')";
+	colorurl[3] = "url('img/bg_pink.png')";
+	colorListurl[0] = "url('img/bg_list_blue.png')";
+	colorListurl[1] = "url('img/bg_list_green.png')";
+	colorListurl[2] = "url('img/bg_list_yellow.png')";
+	colorListurl[3] = "url('img/bg_list_pink.png')";
+	// colorarr[4] = "#a6ffcc";
+	// colorarr[5] = "#00e676";
+	// colorarr[6] = "#dce775";
+	// colorarr[7] = "#eeff41";
+	// colorarr[8] = "#ffde80";
+	// colorarr[9] = "#ffb74d";
+	// colorarr[10] = "#ff6e40";
+	// colorarr[11] = "#f50057";
 
-	// for (var i = 1; i <=colorarr.length; i++) {
-		// document.getElementById('exambox'+i).style.backgroundColor=colorarr[i-1];
+
+	// for (var i = 1; i <= 34; i++) {
+	// 	if (colornum==4) {colornum=0};
+	// 	$('#wishbox'+i+' .avatar').css('background-color',colorarr[colornum]);
+	// 	colornum++;
 	// };
-	var colornum;
-	for (var i = 1; i <= 34; i++) {
-		colornum = Math.floor(Math.random()*12);
-		document.getElementById('wishbox'+i).style.backgroundColor=colorarr[colornum];
-	};
-	
-//width adjustment
-	// alert(screen.width);
-	if (document.body.clientWidth >799) {
-		pxset = Math.floor(document.body.clientWidth/100)+2;
-		// document.getElementById('nav').style.fontSize=pxset;
-		document.getElementById('main').style.fontSize=pxset;
-		document.getElementById('wish').style.fontSize=pxset;
-		document.getElementById('show').style.fontSize=pxset;
-		// $('body').css("font-size",Math.floor(pxset));
-		document.getElementById('backwords').style.fontSize=Math.floor(document.body.clientWidth/50);
-	}
-// alert(document.body.clientWidth);        //网页可见区域宽(body)
+	// colornum = 0;
 
 //Ajax
 function loadXMLDoc(url,cfunc)
@@ -83,67 +87,83 @@ function myFunction(url,page,searchbox)
 loadXMLDoc(url+"?pageN="+page+"&searchbox="+searchbox,function()
   {
   if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    {
-    var text = xmlhttp.responseText.replace(/\r\n/ig,"</br>");
-    // document.getElementById("myDiv").innerHTML=text; 
-    obj = eval("(" + text + ")");
-    $('.content').html('');
-	$('.name').html('');
-	$('.time').html('');
-    for (var i = 34; i >= 1; i--) {
-    	$('#wishbox'+i).attr('check',0);
-    	// $('#wishbox'+i).css("background-color","#fff");
-    	$('#wishbox'+i).css("opacity",0.5);
-    };
-    for (var i = 0; i <= obj.maxpage+1; i++) {
-		$('#nav'+i).css("opacity",0.07);
-    };
-    for (var i = 1; i <= 34; i++) {
-		colornum = Math.floor(Math.random()*12);
-		document.getElementById('wishbox'+i).style.backgroundColor=colorarr[colornum];
+	{
+	var text = xmlhttp.responseText.replace(/\r\n/ig,"</br>");
+	// document.getElementById("myDiv").innerHTML=text; 
+	obj = eval("(" + text + ")");
+	var element,para,para2;
+	if (searchmode==1) {
+		para=document.body;
+		element=document.getElementById('main');
+		para.removeChild(element);
+		element=document.createElement('div');
+		element.id='main';
+		para.appendChild(element);
+		searchmode = 0;
 	};
-    for (i = obj.page.length - 1; i >= 0; i--) {
-    	$('#wishbox'+obj.page[i].choose).attr('check',1);
-    	// $('#wishbox'+obj.page[i].choose).css("backgroundColor",colorarr[obj.page[i].color]);
-    	$('#wishbox'+obj.page[i].choose).css("opacity",1);
-    	$('#wishbox'+obj.page[i].choose + ' .content').html(obj.page[i].content);
-    	$('#wishbox'+obj.page[i].choose + ' .name').html(obj.page[i].name);
-    	$('#wishbox'+obj.page[i].choose + ' .time').html(obj.page[i].time.substring(0,10));
-    };
-    if (t==1) {
-    	t=0;
-		for (i = 0; i <= obj.maxpage+1; i++) {
-			var para=document.createElement("i");
-			para.className='fa fa-circle';
-			para.id="nav"+i;
-			para.addEventListener("click", onClickMyFunc);
-			var element=document.getElementById("nav");
-			element.appendChild(para);
-		};
-	}
-	else{
-		if (searchmode==1) {
-			document.getElementById('makewish').style.display='none';
-			para=document.body;
-			element=document.getElementById('nav');
-			para.removeChild(element);
-			element=document.createElement("div");
-			element.id="nav";
-			element.style.fontSize=pxset;
+	for (i = 0; i <= obj.page.length - 1; i++) {
+		//DIVDIY 俗称造物
+		para=document.getElementById('main');
+		element=document.createElement('div');
+		element.className='wishbox';
+		element.id='wishbox'+i;
+		para.appendChild(element);
+			
+			para=element;
+			element=document.createElement('div');
+			element.className='avatar';
 			para.appendChild(element);
-			for (i = 0; i <= obj.maxpage; i++) {
-				var para=document.createElement("i");
-				para.className='fa fa-circle';
-				para.id="nav"+i;
-				para.addEventListener("click", onClickMyFunc2);
-				var element=document.getElementById("nav");
-				element.appendChild(para);
-			};
-		};
+			
+			element=document.createElement('div');
+			element.className='line';
+			para.appendChild(element);
+			
+				para2=element;
+				element=document.createElement('i');
+				element.className='fa fa-circle';
+				para2.appendChild(element);
+				element=document.createElement('i');
+				element.className='fa fa-circle';
+				para2.appendChild(element);
+
+			element=document.createElement('div');
+			element.className='iwishbox';
+			para.appendChild(element);
+
+				para=element;
+				element=document.createElement('div');
+				element.className='wishword';
+				para.appendChild(element);
+
+					para=element;
+					element=document.createElement('p');
+					element.className='to';
+					para.appendChild(element);
+
+					element=document.createElement('p');
+					element.className='content';
+					para.appendChild(element);
+
+					element=document.createElement('p');
+					element.className='from';
+					para.appendChild(element);
+
+					element=document.createElement('p');
+					element.className='time';
+					para.appendChild(element);
+
+		$('#wishbox'+i).attr('check',1);
+		$('#wishbox'+i + ' .avatar').css('backgroundColor',colorarr[obj.page[i].color]);
+		$('#wishbox'+i + ' .iwishbox').css('backgroundImage',colorListurl[obj.page[i].color]);
+		$('#wishbox'+i + ' .to').html(obj.page[i].toWho);
+		$('#wishbox'+i + ' .to').html(obj.page[i].toWho);
+		$('#wishbox'+i + ' .to').html(obj.page[i].toWho);
+		$('#wishbox'+i + ' .content').html(obj.page[i].content);
+		$('#wishbox'+i + ' .from').html(obj.page[i].fromWho);
+		$('#wishbox'+i + ' .time').html(obj.page[i].time.substring(0,10));
 	}
-	$('#nav'+page).css("opacity",0.5);
-    }
-  });
+	}
+  })
 }
 
 //search mode
@@ -161,52 +181,37 @@ function myFunction2(){
 
 
 //dynamic action
-function onClickMyFunc(){
-	var main = document.getElementById('main');
-	var page = Number(this.id.substring(3,5));
-	main.setAttribute('page',page);
-	myFunction('load.php',page);
-}
-function onClickMyFunc2(){
-	var main = document.getElementById('main');
-	var page = Number(this.id.substring(3,5));
-	name = document.getElementById('searchbox').value;
-	main.setAttribute('page',page);
-	myFunction('search.php',page,name);
-}
+
+// function onClickMyFunc(){
+// 	var main = document.getElementById('main');
+// 	var page = Number(this.id.substring(3,5));
+// 	main.setAttribute('page',page);
+// 	myFunction('load.php',page);
+// }
+// function onClickMyFunc2(){
+// 	var main = document.getElementById('main');
+// 	var page = Number(this.id.substring(3,5));
+// 	name = document.getElementById('searchbox').value;
+// 	main.setAttribute('page',page);
+// 	myFunction('search.php',page,name);
+// }
 function makewish(){
-		var boo=0;
-		for (var i = 34; i >=1; i--) {
-			if ($("#wishbox"+i).attr("check")==0) {
-				boo=i;
-				break;
-			}
-		};
-		if (boo==0) {
-			alert("这颗心已经满满的都是祝福啦，换一颗吧～");
-		}else{
-			// $("#wishwin").css("z-index","20");
-			// $("#wish").css("z-index","21");
-			// $("#wish").css("top","7em");
-			// $("#wish").css("opacity","0.96");
 			tid = document.getElementById('wish');
 			tid.style.zIndex="21";
-			tid.style.top="7em";
+			tid.style.top="5%";
 			tid.style.opacity="0.96";
 			document.getElementById('wishwin').style.zIndex="20";
-			document.getElementById("choose").value = boo;
-			document.getElementById("page").value = document.getElementById('main').getAttribute('page');
-			document.getElementById("content").focus();
-		};
+			document.getElementById('wishwin').style.opacity="0.3";
 }
 
 function iclose(iwishwin,iwish,ishow){
 	if ( iwishwin == 1) {
-		$("#wishwin").css("z-index","");
+		$("#wishwin").css("z-index","-2");
+		$("#wishwin").css("opacity","0");
 	};
 	if ( iwish == 1) {
 		$("#wish").css("z-index","-1");
-		$("#wish").css("top","0em");
+		$("#wish").css("top","-20%");
 		$("#wish").css("opacity","0");
 	};
 	if ( ishow == 1) {
@@ -217,131 +222,39 @@ function iclose(iwishwin,iwish,ishow){
 	};
 }
 
-	$('.wishbox').click(function(event){
-		if (this.getAttribute('check')!=1 && searchmode!=1) {
-			$("#wish").css("z-index","21");
-			$("#wish").css("top","7em");
-			$("#wish").css("opacity","0.96");
-			document.getElementById("choose").value = this.id.substring(7,9);
-			document.getElementById("page").value = this.parentNode.getAttribute('page');
-			document.getElementById("content").focus();
-			
-			setTimeout("document.getElementById('wishwin').style.zIndex=20;",500);
-		}});
-	$('.wishbox').mouseover(function(event){
-		if (this.getAttribute('check')==1) {
-			$("#fcont").html($(this).children('.content').html());
-			$("#fname").html($(this).children('.name').html());
-			$("#ftime").html($(this).children('.time').html());
-			$("#wishwin").css("z-index","4");
-			$("#show").css("z-index","21");
-			$("#show").css("width","20em");
-			$("#show").css("height","12em");
-			$("#show").css("opacity","0.96");
-			var zy = event.pageY+10;
-			var zx = event.pageX+10;
-			var maxy = document.body.clientHeight;
-			var maxx = document.body.clientWidth;
-			if (zy+pxset*12+10 > maxy) zy = maxy-pxset*12;
-			if (zx+pxset*20+10 > maxx) zx = maxx-pxset*20;
-			$("#show").css("top",zy+'px');
-			$("#show").css("left",zx+'px');
-		} else {
-			iclose(1,1,1);
-		}
-	});
-	$('#wishwin').mouseover(function(event){
-			iclose(0,0,1);
-	});
-
-
-function pageleft(){
-		main = document.getElementById('main');
-		page = Number(main.getAttribute('page'));
-		if (searchmode == 0) {
-			if (page>0) {
-				page -= 1;
-				main.setAttribute('page',page);
-				myFunction('load.php',page);
-			}else {
-				page = obj.maxpage+1;
-				main.setAttribute('page',page);
-				myFunction('load.php',page);
-			}
-		}
-		else{
-			name = document.getElementById('searchbox').value;
-			if (page>0) {
-				page -= 1;
-				main.setAttribute('page',page);
-				myFunction('search.php',page,name);
-			}else {
-				page = obj.maxpage;
-				main.setAttribute('page',page);
-				myFunction('search.php',page,name);
-			}			
-		}
-}
-function pageright(){
-		main = document.getElementById('main');
-		page = Number(main.getAttribute('page'));
-		if (searchmode == 0) {
-			if (page<obj.maxpage+1) {
-				page += 1;
-				main.setAttribute('page',page);
-				myFunction('load.php',page);
-			}else {
-				page = 0;
-				main.setAttribute('page',page);
-				myFunction('load.php',page);
-			}
-		}
-		else{
-			name = document.getElementById('searchbox').value;
-			if (page<obj.maxpage) {
-				page += 1;
-				main.setAttribute('page',page);
-				myFunction('search.php',page,name);
-			}else {
-				page = 0;
-				main.setAttribute('page',page);
-				myFunction('search.php',page,name);
-			}			
-		}	
+function turncolor(){
+	tid = document.getElementById('wish');
+	tid.style.top="-20%";
+	tid.style.opacity="0";
+	colornum++;
+	if (colornum==4) {colornum=0};
+	setTimeout("tid.style.backgroundImage=colorurl[colornum];",250);
+	setTimeout("document.getElementById('wishwin').style.zIndex='20';",500);
+	setTimeout("document.getElementById('wishwin').style.opacity='0.3';",500);
+	setTimeout("tid.style.zIndex='21';",500);
+	setTimeout("tid.style.top='5%';",500);
+	setTimeout("tid.style.opacity='0.96';",500);
+	document.getElementById('color').value=colornum;
 }
 
 
-// document.getElementById('makewish').addEventListener("click", makewish);
+function dbclick(){
+	lasttime = dateObj.getTime();
+	dateObj=new Date();
+	if (dateObj.getTime()-lasttime<2000) {
+		turncolor();
+	};
+}
+
+document.getElementById('makewish').addEventListener("click", makewish);
 document.getElementById('wishwin').addEventListener("click", function(){iclose(1,1,1);});
 document.getElementById('closewish').addEventListener("click", function(){iclose(1,1,1);});
-document.getElementById('closeshow').addEventListener("click", function(){iclose(1,1,1);});
-document.getElementById('pageleft').addEventListener("click", pageleft);
-document.getElementById('pageright').addEventListener("click", pageright);
+// document.getElementById('closeshow').addEventListener("click", function(){iclose(1,1,1);});
+document.getElementById('doubleClickArea1').addEventListener("click", dbclick);
+document.getElementById('doubleClickArea2').addEventListener("click", dbclick);
+document.getElementById('doubleClickArea3').addEventListener("click", dbclick);
 
-
-//set keyboard
-function ifEnter(e){
-	var e = e || window.event; 
-	if (e.keyCode == 13) myFunction2();
-}
-function ifName(e){
-	var e = e || window.event; 
-	if (e.keyCode == 13){
-		document.getElementById('form1').submit();
-	}
-}
-function key(e){
-	var e = e || window.event;
-	if (ienter==1) {
-		if (e.keyCode==13) {
-			makewish();
-			document.getElementById("content").innerHTML='';
-		};
-		if (e.keyCode==27) iclose(1,1,1);
-		if (e.keyCode==37) pageleft();
-		if (e.keyCode==39) pageright();
-	};
-	// if (ienter==1) alert(e.keyCode);
-}
-// document.onkeypress = key(event);
-document.onkeydown = key;
+//touch
+document.getElementById('searchword').addEventListener('touchstart', function(event) { 
+	this.style.backgroundColor='#178d98';
+}, false);

@@ -4,20 +4,20 @@
 	$searchbox=$_GET['searchbox'];
 	$page=$_GET['pageN'];
 	if($searchbox!=""){
-		$dbhost = 'localhost'; 
-		$dbuser = 'root';    
-		$dbpass = 'MyHair';  
-		// $dbhost = 'qdm116724331.my3w.com'; 
-		// $dbuser = 'qdm116724331';   
-		// $dbpass = 'WWyyx5734';  
+		// $dbhost = 'localhost'; 
+		// $dbuser = 'root';    
+		// $dbpass = 'MyHair';  
+		$dbhost = 'qdm116724331.my3w.com'; 
+		$dbuser = 'qdm116724331';   
+		$dbpass = 'WWyyx5734';  
 		$conn = mysql_connect($dbhost, $dbuser,$dbpass);
 		mysql_set_charset('utf8',$conn);
 		$searchbox=mysql_real_escape_string($searchbox);
-		$sql = "SELECT name, content, time
-				FROM wishwall
-				WHERE name=('$searchbox')";
-		mysql_select_db('wishwall');
-		// mysql_select_db('qdm116724331_db');
+		$sql = "SELECT toWho, fromWho, content, time, color
+				FROM wishwall_love
+				WHERE toWho=('$searchbox') OR fromWho=('$searchbox')";
+		// mysql_select_db('wishwall');
+		mysql_select_db('qdm116724331_db');
 		$retval=mysql_query($sql,$conn);  
 		if(!$retval ){
 			die('Could not get data: ' . mysql_error());
@@ -39,12 +39,13 @@
 			}else {
 				$text = $text . ',{';
 			}
-			$text = $text	. '"name":"' . $row['name']
+			$text = $text	. '"toWho":"To : ' . $row['toWho']
+							. '","fromWho":"From : ' . $row['fromWho']
 							. '","content":"' . $row['content']
 							. '","time":"' . $row['time']
 							. '","page":"' . $maxpage
-							. '","choose":"' . $i
-							// . '","color":"' . $row['color']
+							// . '","choose":"' . $i
+							. '","color":"' . $row['color']
 							.  '"}';
 			}
 		}

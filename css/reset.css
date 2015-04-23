@@ -21,7 +21,7 @@ fieldset,img {
 	border:0;
 }
 input{
-	width:5em;
+	/*width:5em;*/
 }
 address,caption,cite,code,dfn,th,var {
 	font-style:normal;
