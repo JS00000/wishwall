@@ -4,20 +4,18 @@
 	$searchbox=$_GET['searchbox'];
 	$page=$_GET['pageN'];
 	if($searchbox!=""){
-		// $dbhost = 'localhost'; 
-		// $dbuser = 'root';    
-		// $dbpass = 'MyHair';  
-		$dbhost = 'qdm116724331.my3w.com'; 
-		$dbuser = 'qdm116724331';   
-		$dbpass = 'WWyyx5734';  
+		$dbhost = 'localhost'; 
+		$dbuser = 'root';    
+		$dbpass = '';  
 		$conn = mysql_connect($dbhost, $dbuser,$dbpass);
 		mysql_set_charset('utf8',$conn);
 		$searchbox=mysql_real_escape_string($searchbox);
 		$sql = "SELECT toWho, fromWho, content, time, color
 				FROM wishwall_love
-				WHERE toWho=('$searchbox') OR fromWho=('$searchbox')";
-		// mysql_select_db('wishwall');
-		mysql_select_db('qdm116724331_db');
+				WHERE toWho=('$searchbox') ";
+				
+		mysql_select_db('wishwall');
+
 		$retval=mysql_query($sql,$conn);  
 		if(!$retval ){
 			die('Could not get data: ' . mysql_error());

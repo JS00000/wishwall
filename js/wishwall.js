@@ -1,46 +1,64 @@
-// set edition
-function IsPC() {
-	var userAgentInfo = navigator.userAgent;
-    var Agents = ["Android", "iPhone",
-                "SymbianOS", "Windows Phone",
-                "iPad", "iPod","MQQBrowser","BlackBerry"];
-    var flag = true;
-    for (var v = 0; v < Agents.length; v++) {
-        if (userAgentInfo.indexOf(Agents[v]) > 0) {
-            flag = false;
-            break;
+//////////////////////////////
+// jQuery
+(function($){
+var hasTouch = /android|iphone|ipad/i.test(navigator.userAgent.toLowerCase()),
+    eventName = hasTouch ? 'touchend' : 'click';
+/**
+ * Bind an event handler to the "double tap" JavaScript event.
+ * @param {function} doubleTapHandler
+ * @param {number} [delay=300]
+ */
+$.fn.doubletap = function(doubleTapHandler, delay){
+    delay = (delay == null) ? 300 : delay;
+    this.bind(eventName, function(event){
+        var now = new Date().getTime();
+        // the first time this will make delta a negative number
+        var lastTouch = $(this).data('lastTouch') || now + 1;
+        var delta = now - lastTouch;
+        if(delta < delay && 0 < delta){
+            // After we detct a doubletap, start over
+            $(this).data('lastTouch', null);
+            if(doubleTapHandler !== null && typeof doubleTapHandler === 'function'){
+                doubleTapHandler(event);
+            }
+        }else{
+            $(this).data('lastTouch', now);
         }
-    }
-    return flag;
+    });
+};
+})(jQuery);
+
+
+//////////////////////////////
+// set edition
+function is_weixin(){  
+	var ua = navigator.userAgent.toLowerCase();  
+	if(ua.match(/MicroMessenger/i) == "micromessenger"){  
+		return true;
+	}
+	return false;  
 }
-if (IsPC()) {
-	window.location='http://lifefavorite.com/wish/wishwall_beta4';
+if (!is_weixin()) {
+	// window.location='errorEdition.html';
 };
 
 
+//////////////////////////////
 //var
 	var xmlhttp;
 	var obj;
 	var t=1;
 	var searchmode=0;
-	var pxset=16;
-	var ienter = 1;
 	var tid;
-	var lasttime;
-	var dateObj=new Date();
 	var colornum = 0;
 	var colorarr = [];
 	var colorurl = [];
 	var colorListurl = [];
 //set color
-	// colorarr[0] = "#ff00a2";
-	// colorarr[1] = "#ff5bf5";
-	// colorarr[2] = "#64b5f6";
-	// colorarr[3] = "#18ffff";
-	colorarr[0] = "#44bdc9";
-	colorarr[1] = "#06dbbd";
-	colorarr[2] = "#ffd633";
-	colorarr[3] = "#fecdd2";
+	colorarr[0] = "#49bec9";
+	colorarr[1] = "#00bfa5";
+	colorarr[2] = "#f9ce1d";
+	colorarr[3] = "#ef9a9a";
 	colorurl[0] = "url('img/bg_blue.png')";
 	colorurl[1] = "url('img/bg_green.png')";
 	colorurl[2] = "url('img/bg_yellow.png')";
@@ -49,60 +67,24 @@ if (IsPC()) {
 	colorListurl[1] = "url('img/bg_list_green.png')";
 	colorListurl[2] = "url('img/bg_list_yellow.png')";
 	colorListurl[3] = "url('img/bg_list_pink.png')";
-	// colorarr[4] = "#a6ffcc";
-	// colorarr[5] = "#00e676";
-	// colorarr[6] = "#dce775";
-	// colorarr[7] = "#eeff41";
-	// colorarr[8] = "#ffde80";
-	// colorarr[9] = "#ffb74d";
-	// colorarr[10] = "#ff6e40";
-	// colorarr[11] = "#f50057";
 
 
-	// for (var i = 1; i <= 34; i++) {
-	// 	if (colornum==4) {colornum=0};
-	// 	$('#wishbox'+i+' .avatar').css('background-color',colorarr[colornum]);
-	// 	colornum++;
-	// };
-	// colornum = 0;
-
+//////////////////////////////
 //Ajax
-function loadXMLDoc(url,cfunc)
-{
-if (window.XMLHttpRequest)
-  {// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
-else
-  {// code for IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-xmlhttp.onreadystatechange=cfunc;
-xmlhttp.open("GET",url,true);
-xmlhttp.send();
+function loadXMLDoc(url,cfunc){
+	if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	}
+	else{// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=cfunc;
+	xmlhttp.open("GET",url,true);
+	xmlhttp.send();
 }
 
-function myFunction(url,page,searchbox)
-{
-loadXMLDoc(url+"?pageN="+page+"&searchbox="+searchbox,function()
-  {
-  if (xmlhttp.readyState==4 && xmlhttp.status==200)
-	{
-	var text = xmlhttp.responseText.replace(/\r\n/ig,"</br>");
-	// document.getElementById("myDiv").innerHTML=text; 
-	obj = eval("(" + text + ")");
+function makeDiv(i,j){
 	var element,para,para2;
-	if (searchmode==1) {
-		para=document.body;
-		element=document.getElementById('main');
-		para.removeChild(element);
-		element=document.createElement('div');
-		element.id='main';
-		para.appendChild(element);
-		searchmode = 0;
-	};
-	for (i = 0; i <= obj.page.length - 1; i++) {
-		//DIVDIY 俗称造物
 		para=document.getElementById('main');
 		element=document.createElement('div');
 		element.className='wishbox';
@@ -119,11 +101,8 @@ loadXMLDoc(url+"?pageN="+page+"&searchbox="+searchbox,function()
 			para.appendChild(element);
 			
 				para2=element;
-				element=document.createElement('i');
-				element.className='fa fa-circle';
-				para2.appendChild(element);
-				element=document.createElement('i');
-				element.className='fa fa-circle';
+				element=document.createElement('img');
+				element.src='img/dot.png'
 				para2.appendChild(element);
 
 			element=document.createElement('div');
@@ -152,74 +131,104 @@ loadXMLDoc(url+"?pageN="+page+"&searchbox="+searchbox,function()
 					element.className='time';
 					para.appendChild(element);
 
-		$('#wishbox'+i).attr('check',1);
-		$('#wishbox'+i + ' .avatar').css('backgroundColor',colorarr[obj.page[i].color]);
-		$('#wishbox'+i + ' .iwishbox').css('backgroundImage',colorListurl[obj.page[i].color]);
-		$('#wishbox'+i + ' .to').html(obj.page[i].toWho);
-		$('#wishbox'+i + ' .to').html(obj.page[i].toWho);
-		$('#wishbox'+i + ' .to').html(obj.page[i].toWho);
-		$('#wishbox'+i + ' .content').html(obj.page[i].content);
-		$('#wishbox'+i + ' .from').html(obj.page[i].fromWho);
-		$('#wishbox'+i + ' .time').html(obj.page[i].time.substring(0,10));
+		$('#wishbox'+i + ' .avatar').css('backgroundColor',colorarr[obj.page[j].color]);
+		$('#wishbox'+i + ' .iwishbox').css('backgroundImage',colorListurl[obj.page[j].color]);
+		$('#wishbox'+i + ' .to').html(obj.page[j].toWho);
+		$('#wishbox'+i + ' .to').html(obj.page[j].toWho);
+		$('#wishbox'+i + ' .to').html(obj.page[j].toWho);
+		$('#wishbox'+i + ' .content').html(obj.page[j].content);
+		$('#wishbox'+i + ' .from').html(obj.page[j].fromWho);
+		$('#wishbox'+i + ' .time').html(obj.page[j].time.substring(0,10));
+}
+
+
+
+function makePage(){
+	var i,j,element,para;
+	for (i = pageN*34; i < pageN*34 + obj.page.length ; i++) {
+		j = i - pageN*34;
+		makeDiv(i,j);
 	}
+}
+
+function makeSearch(){
+	var j,element,para;
+		para=document.body;
+		element=document.getElementById('main');
+		para.removeChild(element);
+		element=document.createElement('div');
+		element.id='main';
+		para.appendChild(element);
+	for (var i = 0; i < obj.page.length; i++) {
+		makeDiv(i,i);
+	};
+}
+
+
+function loadPage(pageN){
+	loadXMLDoc("load.php?pageN="+pageN,function(){
+		if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			var text = xmlhttp.responseText.replace(/\r\n/ig,"</br>");
+			// document.getElementById("myDiv").innerHTML=text; 
+			obj = eval("(" + text + ")");
+			if (obj.page.length>0) {
+				document.getElementById('main').setAttribute('page',pageN);
+				makePage();
+			};
+		}
+	})
+}
+
+window.onscroll = function(){
+	var a = document.documentElement.scrollTop == 0 ? document.body.clientHeight : document.documentElement.clientHeight;
+	var b = document.documentElement.scrollTop == 0 ? document.body.scrollTop : document.documentElement.scrollTop;
+	var c = document.documentElement.scrollTop == 0 ? document.body.scrollHeight : document.documentElement.scrollHeight;
+	if (b != 0){
+		if (a + b == c){
+			pageN+=1;
+			loadPage(pageN);
+		}
 	}
-  })
 }
 
 //search mode
-function myFunction2(){
-	var name = document.getElementById('searchbox').value;
-	if (name!='') {
-		searchmode = 1;
-		myFunction('search.php',0,name);
-		ienter = 0;
-	}
-	else{
-		location='index.php';
-	}
+function loadSearch(searchbox){
+	loadXMLDoc("search.php?pageN=0&searchbox="+searchbox,function(){
+		if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			var text = xmlhttp.responseText.replace(/\r\n/ig,"</br>");
+			// document.getElementById("myDiv").innerHTML=text; 
+			obj = eval("(" + text + ")");
+			searchmode = 1;
+			makeSearch();
+		}
+	})
+}
+
+function getSearchBox(){
+	searchbox=document.getElementById('searchbox').value;
+	loadSearch(searchbox);
 }
 
 
+//////////////////////////////
 //dynamic action
 
-// function onClickMyFunc(){
-// 	var main = document.getElementById('main');
-// 	var page = Number(this.id.substring(3,5));
-// 	main.setAttribute('page',page);
-// 	myFunction('load.php',page);
-// }
-// function onClickMyFunc2(){
-// 	var main = document.getElementById('main');
-// 	var page = Number(this.id.substring(3,5));
-// 	name = document.getElementById('searchbox').value;
-// 	main.setAttribute('page',page);
-// 	myFunction('search.php',page,name);
-// }
 function makewish(){
 			tid = document.getElementById('wish');
 			tid.style.zIndex="21";
-			tid.style.top="5%";
+			tid.style.top="2em";
 			tid.style.opacity="0.96";
 			document.getElementById('wishwin').style.zIndex="20";
 			document.getElementById('wishwin').style.opacity="0.3";
+			setTimeout("document.getElementById('to').focus();",500);
 }
 
-function iclose(iwishwin,iwish,ishow){
-	if ( iwishwin == 1) {
-		$("#wishwin").css("z-index","-2");
-		$("#wishwin").css("opacity","0");
-	};
-	if ( iwish == 1) {
-		$("#wish").css("z-index","-1");
-		$("#wish").css("top","-20%");
-		$("#wish").css("opacity","0");
-	};
-	if ( ishow == 1) {
-		$("#show").css("z-index","-1");
-		$("#show").css("width","5em");
-		$("#show").css("height","3em");
-		$("#show").css("opacity","0");
-	};
+function iclose(){
+	$("#wishwin").css("z-index","-2");
+	$("#wishwin").css("opacity","0");
+	$("#wish").css("z-index","-1");
+	$("#wish").css("top","-20%");
+	$("#wish").css("opacity","0");
 }
 
 function turncolor(){
@@ -232,29 +241,13 @@ function turncolor(){
 	setTimeout("document.getElementById('wishwin').style.zIndex='20';",500);
 	setTimeout("document.getElementById('wishwin').style.opacity='0.3';",500);
 	setTimeout("tid.style.zIndex='21';",500);
-	setTimeout("tid.style.top='5%';",500);
+	setTimeout("tid.style.top='2em';",500);
 	setTimeout("tid.style.opacity='0.96';",500);
 	document.getElementById('color').value=colornum;
 }
 
-
-function dbclick(){
-	lasttime = dateObj.getTime();
-	dateObj=new Date();
-	if (dateObj.getTime()-lasttime<2000) {
-		turncolor();
-	};
-}
-
 document.getElementById('makewish').addEventListener("click", makewish);
-document.getElementById('wishwin').addEventListener("click", function(){iclose(1,1,1);});
-document.getElementById('closewish').addEventListener("click", function(){iclose(1,1,1);});
-// document.getElementById('closeshow').addEventListener("click", function(){iclose(1,1,1);});
-document.getElementById('doubleClickArea1').addEventListener("click", dbclick);
-document.getElementById('doubleClickArea2').addEventListener("click", dbclick);
-document.getElementById('doubleClickArea3').addEventListener("click", dbclick);
-
-//touch
-document.getElementById('searchword').addEventListener('touchstart', function(event) { 
-	this.style.backgroundColor='#178d98';
-}, false);
+document.getElementById('wishwin').addEventListener("click", iclose);
+$('#doubleClickArea1,#doubleClickArea2,#doubleClickArea3').doubletap(function(){
+	turncolor();
+});

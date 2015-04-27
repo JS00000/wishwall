@@ -6,7 +6,6 @@ padding: 0% 2%;
 }
 
 nav {
-	margin-top: 3%;
 	background-color: transparent;
 	border-radius: 1em;
 	width: 100%;
@@ -17,22 +16,14 @@ nav {
 	width: 37%;
 	float: left;
 	max-width:10em;
+	padding-top: 0.3em;
 }
 .navbar-content {
 	width: 63%;
 	float: left;
 }
-#heart {
-	width: 25%;
-}
-#declare {
-	width: 63%;
-}
-h2 {
-	font-family: sans-serif,Helvetica;
-	color: #c55117;
-	font-size: 0.7em;
-	margin-top: 0.3em;
+.navbar-header img {
+	width: 95%;
 }
 
 
@@ -77,34 +68,16 @@ h2 {
 	border-bottom-right-radius: 0.7em;
 	float: left;
 }
+#searchword:active {
+	background-color: #178d98;
+}
 #searchword span{
 	float: left;
 	width: 100%;
 	margin: 0.3em 0 0.3em 0.5em;
+	color: #fff;
 }
-.dropdown {
-	padding-top: 0.1em;
-	height: 1.2em;
-	border-left:  solid 2px #44bdc9;
-	margin-top: 1em;
-	color:#979797;
-}
-#dropdown-toggle{
-	cursor: pointer;
-	user-select: none;
-	-moz-user-select: none;
-	margin-right: 1.5em;
-}
-#dropdown-menu{
-	display: none;
-	list-style: disc;
-	margin-left: 1em;
-	margin-top: 0.5em;
-	line-height: 1.2em;
-}
-#dropdown-menu a:link,#dropdown-menu a:visited{
-	color: #999;
-}
+
 
 /*main*/
 #main {
@@ -114,11 +87,15 @@ h2 {
 }
 .wishbox {
 	height: 25%;
-	min-height: 10em;
+	min-height: 10.5em;
 	max-height: 12em;
 	width: 100%;
-	border-bottom: 1px solid #44bdc9;
+	border-bottom: 1px solid rgba(69,189,201,0.3);
 	position: relative;
+	overflow: hidden;
+}
+#main .wishbox:last-of-type {
+	margin-bottom: 24px;
 }
 .wishbox .avatar {
 	width: 2em;
@@ -135,34 +112,25 @@ h2 {
 	box-shadow:0em 0.1em 0.3em #666;
 }
 .wishbox .line {
-	height: 200%;
-	width: 3px;
+	height: 100%;
+	width: 2px;
 	background-color: #44bdc9;
 	float: left;
 	position: absolute;
-	left: 14%;
+	left: 15%;
 }
-.wishbox .line i{
+.wishbox .line img {
+	width: 14px;
 	position: absolute;
-	top: 2.2em;
-	left: -0.33em;
-	color: #44bdc9;
-	font-size: 0.73em;
-}
-.wishbox .line i:first-of-type{
-	top: 1.16em;
-	left: -0.37em;
-	color: #44bdc9;
-	font-size: 1.2em;
-	opacity: 0.5;
+	top: 1.6em;
+	left: -0.36em;
 }
 .wishbox .iwishbox {
 	width: 75%;
-	height: 95%;
+	height: 100%;
 	float: left;
 	position: relative;
 	left: 8%;
-	background-image: url('../img/bg_list_yellow.png');
 	background-size: 100% 100%;
 	color: #fff;
 	padding-left: 2em;
@@ -178,7 +146,7 @@ h2 {
 }
 .wishword .content {
 	height: 55%;
-	overflow: scroll;
+	overflow: auto;
 	margin:1% 0 2%;
 }
 .wishword .from {
@@ -189,14 +157,13 @@ h2 {
 	/*padding-right: 20%;*/
 }
 
-
-
 #makewish {
 	position: fixed;
 	bottom: 0;
 	right: 0;
 	width: 5.6em;
 	height: 5.6em;
+	z-index: 10;
 }
 #makewishC1 {
 	position: absolute;
@@ -233,9 +200,8 @@ h2 {
 	opacity: 0.2;
 }
 
-.icon:hover #makewishC2 {
+/*.icon:hover #makewishC2 {
 	opacity: 0.8;
-	position: absolute;
 	background-color: #98dbe1;
 	width: 4.8em;
 	height: 4.8em;
@@ -245,14 +211,14 @@ h2 {
 }
 .icon:hover #makewishC3 {
 	opacity: 0.2;
-	position: absolute;
 	background-color: #44bdc9;
 	width: 5.6em;
 	height: 5.6em;
 	left: -1.4em;
 	top: -1.4em;
 	border-radius: 2.8em;
-}
+}*/
+
 .icon img {
 	position: relative;
 	z-index: 13;
@@ -274,8 +240,7 @@ h2 {
 }
 #wish {
 	width: 88%;
-	height: 13em;
-	background-image:url('../img/bg_blue.png');
+	height: 15em;
 	background-size: 100% 100%;
 	position: fixed;
 	left: 50%;
@@ -283,12 +248,14 @@ h2 {
 	margin-left: -44%;
 	z-index: -1;
 	opacity: 0;
+	font-family: sans-serif;
 }
 #doubleClickArea1,#doubleClickArea2,#doubleClickArea3 {
 	position: absolute;
-	background-color: transparent;
 	width: 30%;
 	height: 30%;
+	z-index: 30;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 #doubleClickArea1{
 	top: 0;
@@ -310,11 +277,11 @@ h2 {
 	position: relative;
 }
 #wish div:first-of-type {
-	margin-top: 1em;
+	margin-top: 1.4em;
 }
 #wish span {
 	position: absolute;
-	top: 0.5em;
+	top: 0.3em;
 }
 #wish input {
 	width: 100%;
@@ -322,20 +289,38 @@ h2 {
 	border-bottom: solid 1px #fff;
 	color: #fff;
 	background-color: transparent;
-	font-size: 1.5em;
-	padding-left: 2em;
+	padding-left: 2.5em;
+	font-size: 1.2em;
 }
 #wish textarea {
-	width: 78%;
-	height: 5em;
-	margin-left:10%;
-	margin-right: 30%;
+	width: 80%;
+	height: 4.8em;
+	margin-left: 10%;
+	padding-right: 2%;
 	color: #fff;
+	font-size: 1.2em;
 	border: none;
-	padding-top: 0.5em;
-	font-size: 1em;
-	resize:none;
+	resize: none;
 	background-color: transparent;
+}
+#content:-moz-placeholder,#to:-moz-placeholder,#from:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #fff;
+    opacity: 0.6;  
+}
+
+#content::-moz-placeholder,#to::-moz-placeholder,#from::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #fff;
+    opacity: 0.6;
+}
+
+#content:-ms-input-placeholder,#to:-ms-input-placeholder,#from:-ms-input-placeholder {
+    color: #fff;
+    opacity: 0.6;
+}
+
+#content::-webkit-input-placeholder,#to::-webkit-input-placeholder,#from::-webkit-input-placeholder {
+    color: #fff;
+    opacity: 0.6;
 }
 #wish div:last-of-type {
 	width: 6em;
@@ -345,10 +330,10 @@ h2 {
 #wish #submit {
 	border: 1px solid #fff;
 	border-radius: 0.3em;
-	font-size: 1em;
-	height: 2em;	
+	height: 1.7em;
 	padding: 0;
-	margin-top: 0.3em;
+	margin-top: 0.4em;
+	font-size: 1em;
 }
 #color,#page,#closewish{
 	display: none;
@@ -372,17 +357,31 @@ h2 {
 #foot p:first-of-type {
 	display: none;
 }
-#show {
-	-webkit-transition: 0.3s;
-	-moz-transition: 0.3s;
-	-o-transition: 0.3s;
-	-ms-transition: 0.3s;
-	transition: 0.3s;
-}
+
 #wishwin,#wish,#makewishC2,#makewishC3 {
 	-webkit-transition: 0.5s;
 	-moz-transition: 0.5s;
 	-o-transition: 0.5s;
 	-ms-transition: 0.5s;
 	transition: 0.5s;
+}
+#lazyDiv1,#lazyDiv2,#lazyDiv3 {
+	position: absolute;
+	top: -200%;
+	left: -200%;
+}
+
+@media screen and (max-width: 300px) { 
+	.wishbox .avatar {
+		display: none;
+	}
+	.wishbox .line {
+		left: 5%;
+	}
+}
+
+@media screen and (max-height: 240px) {
+	#wish {
+		margin-top: -2em;
+	}
 }
