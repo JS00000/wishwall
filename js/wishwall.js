@@ -39,7 +39,7 @@ function is_weixin(){
 	return false;  
 }
 if (!is_weixin()) {
-	// window.location='errorEdition.html';
+	window.location='errorEdition.html';
 };
 
 
