@@ -1,19 +1,17 @@
 <?php
 	header("Content-Type:text/html;Charset=UTF-8");
-	$pageN=$_GET['pageN'];
+	if(isset($_GET['pageN']))
+		$pageN=mysql_real_escape_string($_GET['pageN']);
 	$dbhost = 'localhost'; 
 	$dbuser = 'root';
 	$dbpass = '';
 	$conn = mysql_connect($dbhost, $dbuser,$dbpass);
 	mysql_set_charset('utf8',$conn);
-	if(! $conn ){
+	if(!$conn){
 		die('Could not connect: ' . mysql_error());
 	}
 	$num = $pageN*34 ;
-	$sql = 'SELECT fromWho, toWho, content, time, color
-			FROM wishwall_love
-			order by ID desc limit '.$num.',34';
-	
+	$sql = "SELECT fromWho, toWho, content, time, color FROM wishwall_love ORDER BY ID DESC LIMIT $num,34;";
 	mysql_select_db('wishwall');
 	
 	$retval = mysql_query( $sql, $conn );

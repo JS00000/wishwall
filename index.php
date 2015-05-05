@@ -61,20 +61,23 @@
 	</div>
 	<script src="js/wishwall.js" type="text/javascript"></script>
 	<script type="text/javascript">
-		var searchbox = <?php if (empty($_GET['searchbox'])) echo '""'; else echo '"'.$_GET['searchbox'].'"'; ?>;
-		if (searchmode==1||searchbox!="") {
+		var searchbox = <?php echo empty($_GET['searchbox'])?'""':'"'.$_GET['searchbox'].'"'; ?>;
+		if (searchmode==1 || searchbox!="") {
 			loadSearch(searchbox);
 		}else{
-			var pageN = <?php if (empty($_GET['pageN'])) echo 0; else echo $_GET['pageN']; ?>;
+
+			var pageN = <?php echo empty($_GET['pageN'])?0:$_GET['pageN']; ?>;
 			document.getElementById('main').setAttribute('page',pageN);
 			loadPage(pageN);
 		}
-	</script>
-	<script>
+
 		document.getElementById('wish').style.backgroundImage="url('img/bg_blue.png')";
-		setTimeout("document.getElementById('lazyDiv1').style.backgroundImage='url(img/bg_green.png)';",1000);
-		setTimeout("document.getElementById('lazyDiv2').style.backgroundImage='url(img/bg_yellow.png)';",1000);
-		setTimeout("document.getElementById('lazyDiv3').style.backgroundImage='url(img/bg_pink.png)';",1000);
+		function change(){
+			document.getElementById('lazyDiv1').style.backgroundImage='url(img/bg_green.png)';
+			document.getElementById('lazyDiv2').style.backgroundImage='url(img/bg_yellow.png)';
+			document.getElementById('lazyDiv3').style.backgroundImage='url(img/bg_pink.png)';
+		}
+		setTimeout(change,1000);
 	</script>
 </body>
 </html>

@@ -1,19 +1,17 @@
 <?php  
 	header("Content-Type:text/html;Charset=UTF-8");
 	date_default_timezone_set('prc');
-	$searchbox=$_GET['searchbox'];
-	$page=$_GET['pageN'];
+
+	$searchbox=mysql_real_escape_string($_GET['searchbox']);
+	$page=mysql_real_escape_string($_GET['pageN']);
+
 	if($searchbox!=""){
 		$dbhost = 'localhost'; 
 		$dbuser = 'root';    
 		$dbpass = '';  
 		$conn = mysql_connect($dbhost, $dbuser,$dbpass);
 		mysql_set_charset('utf8',$conn);
-		$searchbox=mysql_real_escape_string($searchbox);
-		$sql = "SELECT toWho, fromWho, content, time, color
-				FROM wishwall_love
-				WHERE toWho=('$searchbox') ";
-				
+		$sql = "SELECT toWho,fromWho,content,time,color FROM wishwall_love WHERE toWho='$searchbox';";
 		mysql_select_db('wishwall');
 
 		$retval=mysql_query($sql,$conn);  
@@ -24,6 +22,7 @@
 		$i=35;
 		$j=1;
 		$maxpage=0;
+
 		while($row = mysql_fetch_assoc($retval)){
 			$i-=1;
 			if ($i==0) {

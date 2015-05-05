@@ -31,16 +31,12 @@ $.fn.doubletap = function(doubleTapHandler, delay){
 
 //////////////////////////////
 // set edition
-function is_weixin(){  
+!function(){  
 	var ua = navigator.userAgent.toLowerCase();  
-	if(ua.match(/MicroMessenger/i) == "micromessenger"){  
-		return true;
-	}
-	return false;  
-}
-if (!is_weixin()) {
-	window.location='errorEdition.html';
-};
+	if(ua.indexOf('micromessenger') == -1 ){  
+		window.location='errorEdition.html';
+	}  
+}.apply(this);
 
 
 //////////////////////////////
