@@ -55,8 +55,9 @@ nav {
 	border: none;
 	margin: 0.7em 3% 0.3em 2em;
 	width: 75%;
-	color:#979797;
+	color:#44bdc9;
 	float: left;
+	opacity: 0.7;
 }
 #searchword {
 	width: 28%;
@@ -78,6 +79,25 @@ nav {
 	color: #fff;
 }
 
+:-moz-placeholder,:-moz-placeholder,:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	color: #44bdc9;
+	opacity: 0.7;
+}
+
+::-moz-placeholder,::-moz-placeholder,::-moz-placeholder { /* Mozilla Firefox 19+ */
+	color: #44bdc9;
+	opacity: 0.7;
+}
+
+:-ms-input-placeholder,:-ms-input-placeholder,:-ms-input-placeholder {
+	color: #44bdc9;
+	opacity: 0.7;
+}
+
+::-webkit-input-placeholder,::-webkit-input-placeholder,::-webkit-input-placeholder {
+	color: #44bdc9;
+	opacity: 0.7;
+}
 
 /*main*/
 #main {

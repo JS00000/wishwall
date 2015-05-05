@@ -12,8 +12,9 @@
 	}
 	$num = $pageN*34 ;
 	$sql = "SELECT fromWho, toWho, content, time, color FROM wishwall_love ORDER BY ID DESC LIMIT $num,34;";
+
 	mysql_select_db('wishwall');
-	
+
 	$retval = mysql_query( $sql, $conn );
 	if(! $retval ){
 		die('Could not get data: ' . mysql_error());

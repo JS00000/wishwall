@@ -216,7 +216,7 @@ function makewish(){
 			tid.style.opacity="0.96";
 			document.getElementById('wishwin').style.zIndex="20";
 			document.getElementById('wishwin').style.opacity="0.3";
-			setTimeout("document.getElementById('to').focus();",500);
+			setTimeout("document.getElementById('from').focus();",500);
 }
 
 function iclose(){

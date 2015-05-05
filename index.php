@@ -9,6 +9,16 @@
 	<meta name="viewport" content="width=device-width,
 									initial-scale=1.0,
 									maximum-scale=1.0">
+<!-- 百度统计 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?c9b5b46da4c6d65a93eef81ac431858b";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
 
 </head>
 <body>
@@ -20,7 +30,7 @@
        		<form id="search" >
        			<div id="searchblock">
 					<i class="fa fa-search" id="searchicon"></i>
-					<input type="text" name="searchbox" id="searchbox" placeholder="搜索有没有被表白" onfocus="document.body.style.marginTop='2.5em';"  onblur="document.body.style.marginTop='0em';">
+					<input type="text" name="searchbox" id="searchbox" placeholder="搜索ta的心愿" onfocus="document.body.style.marginTop='2.5em';"  onblur="document.body.style.marginTop='0em';">
 				</div>
 				<div id="searchword" onclick="getSearchBox()">
 					<span>搜索</span>
@@ -41,8 +51,8 @@
 	<div id="wish">
 		<form method="get" action="submit.php" id="form1">
 			<i class="fa fa-times-circle" id="closewish"></i>
-			<div><span>To:</span><input type="text" name="to" id="to" placeholder="ta"></div>
-			<div><span>From:</span><input type="text" name="from" id="from" placeholder="me"></div>
+			<div><span>To:</span><input type="text" name="to" id="to" placeholder="小塔"></div>
+			<div><span>From:</span><input type="text" name="from" id="from" placeholder="记得截图哦～"></div>
 			<textarea name="content" id="content" placeholder="写下你想对ta说的话（双击角落可以换颜色哦～）"></textarea>
 			<div><input type="submit" id="submit" value="发布"></div>
 			<input type="text" name="color" id="color" value="0">

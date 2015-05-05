@@ -9,9 +9,11 @@
 		$dbhost = 'localhost'; 
 		$dbuser = 'root';    
 		$dbpass = '';  
+		
 		$conn = mysql_connect($dbhost, $dbuser,$dbpass);
 		mysql_set_charset('utf8',$conn);
 		$sql = "SELECT toWho,fromWho,content,time,color FROM wishwall_love WHERE toWho='$searchbox';";
+
 		mysql_select_db('wishwall');
 
 		$retval=mysql_query($sql,$conn);  
