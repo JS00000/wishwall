@@ -33,8 +33,8 @@ $.fn.doubletap = function(doubleTapHandler, delay){
 // set edition
 !function(){  
 	var ua = navigator.userAgent.toLowerCase();  
-	if(ua.indexOf('micromessenger') == -1 ){  
-		window.location='errorEdition.html';
+	if(ua.indexOf('micromessenger') == -1 ){
+		// window.location='errorEdition.html';
 	}  
 }.apply(this);
 
@@ -244,6 +244,12 @@ function turncolor(){
 
 document.getElementById('makewish').addEventListener("click", makewish);
 document.getElementById('wishwin').addEventListener("click", iclose);
-$('#doubleClickArea1,#doubleClickArea2,#doubleClickArea3').doubletap(function(){
-	turncolor();
-});
+if (isWindowsMobile == 0) {
+	$('#doubleClickArea1,#doubleClickArea2,#doubleClickArea3').doubletap(function(){
+		turncolor();
+	});
+} else {
+	$('#doubleClickArea1,#doubleClickArea2,#doubleClickArea3').click(function(){
+		turncolor();
+	});
+}

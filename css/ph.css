@@ -175,6 +175,10 @@ nav {
 .wishword .time {
 	float: right;
 	/*padding-right: 20%;*/
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
 }
 
 #makewish {
@@ -276,6 +280,11 @@ nav {
 	height: 30%;
 	z-index: 30;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	outline:none;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
 }
 #doubleClickArea1{
 	top: 0;
@@ -364,7 +373,7 @@ nav {
 	position: fixed;
 	bottom: 0;
 	left: 50%;
-	margin-left: -4em;
+	margin-left: -5em;
 	margin-bottom: 0.5em;
 	opacity: 0.3;
 	font-size: 12px;

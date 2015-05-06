@@ -1,11 +1,12 @@
 <html>
 <head>
-	<title>表白墙</title>
+	<title>许愿墙</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" media="screen" href="css/reset.css" /> 
-	<link rel="stylesheet" type="text/css" media="screen" href="css/ph.css" /> 
+	<link rel="stylesheet" type="text/css" href="css/reset.css" /> 
+	<link rel="stylesheet" type="text/css" href="css/ph.css" /> 
 	<link href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<meta name="format-detection" content="telephone=no" />
 	<meta name="viewport" content="width=device-width,
 									initial-scale=1.0,
 									maximum-scale=1.0">
@@ -19,7 +20,6 @@ var _hmt = _hmt || [];
   s.parentNode.insertBefore(hm, s);
 })();
 </script>
-
 </head>
 <body>
 	<nav>
@@ -53,7 +53,7 @@ var _hmt = _hmt || [];
 			<i class="fa fa-times-circle" id="closewish"></i>
 			<div><span>To:</span><input type="text" name="to" id="to" placeholder="小塔"></div>
 			<div><span>From:</span><input type="text" name="from" id="from" placeholder="记得截图哦～"></div>
-			<textarea name="content" id="content" placeholder="写下你想对ta说的话（双击角落可以换颜色哦～）"></textarea>
+			<textarea name="content" id="content" placeholder="写下你的心愿，记得截图给小塔（双击弹窗角落可以换颜色哦～）"></textarea>
 			<div><input type="submit" id="submit" value="发布"></div>
 			<input type="text" name="color" id="color" value="0">
 		</form>
@@ -67,8 +67,37 @@ var _hmt = _hmt || [];
 	<div id="lazyDiv3"></div>
 	<div id="foot">
 		<p>Design by Apero.||Code by JS00000</p>
-		<p>@BitworkShop</p>
+		<p>Copyright BitworkShop</p>
 	</div>
+	<script type="text/javascript">
+		var isWindowsMobile = 
+			<?php 
+				/** 
+				* 判断是否是通过手机访问 
+				* @return bool 是否是移动设备     
+				*/  
+				function isMobile() {  
+				  //判断手机发送的客户端标志  
+				  if(isset($_SERVER['HTTP_USER_AGENT'])) {  
+				    $userAgent = strtolower($_SERVER['HTTP_USER_AGENT']);  
+				    $clientkeywords = array(  
+				      'nokia',  'windowsce',
+				      // 'sony', 'ericsson', 'mot', 'samsung', 'htc', 'sgh', 'lg', 'sharp', 'sie-'  ,
+				      // 'philips', 'panasonic', 'alcatel', 'lenovo', 'iphone', 'ipod', 'blackberry', 'meizu',  
+			    	  // 'android', 'netfront', 'symbian', 'ucweb', 'palm', 'operamini',  
+			    	  // 'operamobi', 'opera mobi', 'openwave', 'nexusone', 'cldc', 'midp', 'wap', 'mobile'  
+			    	);  
+			    	// 从HTTP_USER_AGENT中查找手机浏览器的关键字  
+				    	if(preg_match("/(".implode('|',$clientkeywords).")/i",$userAgent)&&strpos($userAgent,'ipad') === false)  
+				    {  
+				      return 1;  
+				    }  
+				  }  
+				  return 0;
+				}  
+				echo isMobile();
+			?>;
+	</script>
 	<script src="js/wishwall.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		var searchbox = <?php echo empty($_GET['searchbox'])?'""':'"'.$_GET['searchbox'].'"'; ?>;
