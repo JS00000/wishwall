@@ -110,11 +110,16 @@ var _hmt = _hmt || [];
 			loadPage(pageN);
 		}
 
-		document.getElementById('wish').style.backgroundImage="url('img/bg_blue.png')";
+
+		colornum = Math.floor(Math.random()*4);
+		document.getElementById('wish').style.backgroundImage=colorurl[colornum];
 		function change(){
-			document.getElementById('lazyDiv1').style.backgroundImage='url(img/bg_green.png)';
-			document.getElementById('lazyDiv2').style.backgroundImage='url(img/bg_yellow.png)';
-			document.getElementById('lazyDiv3').style.backgroundImage='url(img/bg_pink.png)';
+			for (var i = 1; i <= 3; i++) {
+				colornum++;
+				if (colornum == 4) colornum = 0;
+				document.getElementById('lazyDiv'+i).style.backgroundImage=colorurl[colornum];
+			};
+			colornum++;
 		}
 		setTimeout(change,1000);
 	</script>

@@ -2,21 +2,11 @@
 	header("Content-Type:text/html;Charset=UTF-8");
 	date_default_timezone_set('prc');
 	$searchbox = $_GET['searchbox'];
-	if($searchbox!=""){
-		$dbhost = 'localhost'; 
-		$dbuser = 'root';    
-		$dbpass = '';  
-
-		$conn = mysql_connect($dbhost, $dbuser,$dbpass);
-		mysql_set_charset('utf8',$conn);
-		
+	if($searchbox!=""){		
+		require("MySQLAccount.php");
 		$searchbox=mysql_real_escape_string($_GET['searchbox']);
 		$page=mysql_real_escape_string($_GET['pageN']);
-		
 		$sql = "SELECT toWho,fromWho,content,time,color FROM wishwall_love WHERE toWho='$searchbox';";
-
-		mysql_select_db('wishwall');
-
 		$retval=mysql_query($sql,$conn);  
 		if(!$retval ){
 			die('Could not get data: ' . mysql_error());

@@ -12,13 +12,7 @@
 	$to = substr($to,0,20);
 	$from = substr($from,0,12);
 	if($content!=""){
-		$dbhost = 'localhost'; 
-		$dbuser = 'root';
-		$dbpass = '';
-
-		$conn = mysql_connect($dbhost, $dbuser,$dbpass);
-		mysql_select_db('wishwall');
-		mysql_set_charset('utf8',$conn);
+		require("MySQLAccount.php");
 		/**
 		  * @param $content 许愿内容
 		  * @param $from 许愿的人

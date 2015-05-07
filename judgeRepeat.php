@@ -1,12 +1,7 @@
 <?php 
 	header('Content-Type:text/html;Charset=UTF-8');
 	date_default_timezone_set('prc');
-		$dbhost = 'localhost'; 
-		$dbuser = 'root';
-		$dbpass = '';
-		$conn = mysql_connect($dbhost, $dbuser,$dbpass);
-		mysql_select_db('wishwall');
-		mysql_set_charset('utf8',$conn);
+		require("MySQLAccount.php");
 		// judge repeat
 		$sql = "SELECT ID, fromWho, toWho, content, time FROM wishwall_love";
 		$result = mysql_query( $sql, $conn );
