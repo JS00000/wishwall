@@ -15,7 +15,7 @@
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?c9b5b46da4c6d65a93eef81ac431858b";
+  hm.src = "//hm.baidu.com/hm.js?c2d63b69f02bbdef3d037237bedefa26";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
@@ -81,8 +81,8 @@ var _hmt = _hmt || [];
 				  if(isset($_SERVER['HTTP_USER_AGENT'])) {  
 				    $userAgent = strtolower($_SERVER['HTTP_USER_AGENT']);  
 				    $clientkeywords = array(  
-				      'nokia',  'windowsce',
-				      // 'sony', 'ericsson', 'mot', 'samsung', 'htc', 'sgh', 'lg', 'sharp', 'sie-'  ,
+				      'nokia',  'windowsce'
+				      // ,'sony', 'ericsson', 'mot', 'samsung', 'htc', 'sgh', 'lg', 'sharp', 'sie-'  ,
 				      // 'philips', 'panasonic', 'alcatel', 'lenovo', 'iphone', 'ipod', 'blackberry', 'meizu',  
 			    	  // 'android', 'netfront', 'symbian', 'ucweb', 'palm', 'operamini',  
 			    	  // 'operamobi', 'opera mobi', 'openwave', 'nexusone', 'cldc', 'midp', 'wap', 'mobile'  
