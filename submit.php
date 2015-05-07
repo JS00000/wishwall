@@ -36,8 +36,9 @@
 		$result = mysql_query( $sql, $conn );
 		$row = mysql_fetch_assoc($result);
 		if ( ($row['content'] != $content) || ($row['fromWho'] != $from) || ($row['toWho'] != $to) ) {
-			$sql = "INSERT INTO wishwall_love (content,fromWho,toWho,color) VALUES ('$content','$from','$to','$color');";
-			$result = mysql_query( $sql, $conn );	
+			$time = date('Y-m-d', time());
+			$sql = "INSERT INTO wishwall_love (content,fromWho,toWho,color,time) VALUES ('$content','$from','$to','$color','$time');";
+			$result = mysql_query( $sql, $conn );
 		}
 	}
 
