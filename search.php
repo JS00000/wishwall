@@ -5,8 +5,9 @@
 	if($searchbox!=""){		
 		require("MySQLAccount.php");
 		$searchbox=mysql_real_escape_string($_GET['searchbox']);
+		$contentSearch='%'.$searchbox.'%';
 		$page=mysql_real_escape_string($_GET['pageN']);
-		$sql = "SELECT toWho,fromWho,content,time,color FROM wishwall_love WHERE toWho='$searchbox';";
+		$sql = "SELECT toWho,fromWho,content,time,color FROM wishwall_love WHERE toWho='$searchbox' OR fromWho='$searchbox' OR content like '$contentSearch';" ;
 		$retval=mysql_query($sql,$conn);  
 		if(!$retval ){
 			die('Could not get data: ' . mysql_error());
