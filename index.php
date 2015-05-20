@@ -113,6 +113,7 @@ var _hmt = _hmt || [];
 
 		colornum = Math.floor(Math.random()*4);
 		document.getElementById('wish').style.backgroundImage=colorurl[colornum];
+		document.getElementById('color').value=colornum;
 		function change(){
 			for (var i = 1; i <= 3; i++) {
 				colornum++;
