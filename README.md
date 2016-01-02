@@ -89,9 +89,9 @@
 
 操作方法：
 
-	上传文件之后访问 wishindex_delete.php?key=qwerpoiuasdf;lkj
+	上传文件之后访问 wishindex_delete.php?key=xxxx
 
-	key为密钥验证管理员身份，目前“qwerpoiuasdf;lkj”为为一密钥
+	key为密钥验证管理员身份，请自行更改
 
 	然后按页面提示操作
 
