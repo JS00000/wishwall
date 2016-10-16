@@ -89,7 +89,7 @@
 
 操作方法：
 
-	上传文件之后访问 wishindex_delete.php?key=xxxx
+	上传文件之后访问 index_delete.php?key=xxxx
 
 	key为密钥验证管理员身份，请自行更改
 
