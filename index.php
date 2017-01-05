@@ -2,8 +2,8 @@
 <head>
 	<title>许愿墙</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel="stylesheet" type="text/css" href="css/reset.css" /> 
-	<link rel="stylesheet" type="text/css" href="css/ph.css" /> 
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/ph.css" />
 	<link href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet">
 	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 	<meta name="format-detection" content="telephone=no" />

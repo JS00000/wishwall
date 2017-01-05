@@ -1,6 +1,6 @@
 <?php  
 	header("Content-Type:text/html;Charset=UTF-8");
-	date_default_timezone_set('prc');
+	date_default_timezone_set('Asia/Shanghai');
 	$searchbox = $_GET['searchbox'];
 	if($searchbox!=""){		
 		require("MySQLAccount.php");

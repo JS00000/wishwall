@@ -1,6 +1,6 @@
 <?php  
 	header('Content-Type:text/html;Charset=UTF-8');
-	date_default_timezone_set('prc');
+	date_default_timezone_set('Asia/Shanghai');
 	if(isset($_GET['content']) || isset($_GET['from']) || isset($_GET['to'])){
 		if (strpos($_GET['content'], '\\') || strpos($_GET['from'], '\\') || strpos($_GET['to'], '\\') || strpos($_GET['content'], '\\'))
 		{
